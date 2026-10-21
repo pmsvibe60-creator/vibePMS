@@ -19,7 +19,7 @@
     "handlebars": "4.7.9",
     "node-cron": "4.6.0",
     "nodemailer": "10.0.12",
-    "pdfmake": "0.2.23",
+    "pdfmake": "0.3.12",
     "pg": "8.23.1",
     "tsx": "4.23.15",
     "zod": "4.6.5"
