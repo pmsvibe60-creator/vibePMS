@@ -32,7 +32,7 @@ Twenty provides the operator interface and records. A TypeScript sidecar adds re
 
 The idea is straightforward: give builders a useful starting point they can self-host, understand and adapt.
 
-v0.1.0 is an early public preview. Current workflows are oriented toward Estonia. End-to-end payment testing and Railway template validation are still on the roadmap, so start with fictional data and sandbox accounts.
+v0.1.0 is an early public preview. End-to-end payment testing and Railway template validation are still on the roadmap, so start with fictional data and sandbox accounts.
 
 The original code is MIT licensed; hosting and external services are separate. Contributions and thoughtful feedback are welcome.
 
@@ -47,7 +47,7 @@ Sharing vibePMS, an early-stage property management starter kit for people who w
 
 It combines self-hosted Twenty CRM with a TypeScript sidecar for properties, tenants, leases, contract PDFs, simple signing, invoicing and CasaPay integration code. The original code is MIT licensed, with local Docker setup instructions in the repo.
 
-This is a developer starting point, not a turnkey hosted product. It currently targets Estonian rental workflows, and payment/deployment validation is still in progress. Hosting and third-party services need separate configuration.
+This is a developer starting point, not a turnkey hosted product. Payment and deployment validation is still in progress; adapt the templates and rental rules to your market. Hosting and third-party services need separate configuration.
 
 Feedback on the data model, setup experience and missing workflows would be particularly useful. There are open issues for sandbox testing, a demo walkthrough and backup restoration.
 
@@ -57,7 +57,7 @@ Posting note: adapt this to the community and follow its self-promotion rules. T
 
 ## Newsletter / email blurb
 
-vibePMS gives vibe coders an open-source head start on property management. Built on Twenty CRM with a TypeScript sidecar, it includes rental data models and workflows for contracts, invoices and payment integrations. Self-host it, customize it, and make it your own. v0.1.0 is an early preview with an Estonia-focused starting point.
+vibePMS gives vibe coders an open-source head start on property management. Built on Twenty CRM with a TypeScript sidecar, it includes rental data models and workflows for contracts, invoices and payment integrations. Self-host it, customize it, and make it your own. v0.1.0 is an early preview for builders worldwide. Adapt the templates and rental rules to your market.
 
 Explore: https://pmsvibe60-creator.github.io/vibePMS/
 
