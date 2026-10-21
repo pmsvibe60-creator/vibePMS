@@ -12,5 +12,7 @@ with ZipFile(assets / 'vibepms-launch-kit.zip', 'w', ZIP_DEFLATED) as archive:
             archive.write(path, f'vibepms-launch-kit/{path.name}')
     for name in ['README.md', 'launch-copy.md']:
         archive.write(root / 'marketing' / name, f'vibepms-launch-kit/{name}')
+    for path in sorted((root / 'site/prompts').glob('*.txt')):
+        archive.write(path, f'vibepms-launch-kit/prompts/{path.name}')
     archive.write(root / 'LICENSE', 'vibepms-launch-kit/LICENSE')
 print('Packaged site/assets/vibepms-launch-kit.zip')

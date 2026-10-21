@@ -1,0 +1,7 @@
+Help me troubleshoot vibePMS. I do not have coding experience. Read README.md and deploy/railway/README.md, then ask what I was trying to do, what happened, my installed version, and which service failed.
+
+Guide me to the relevant logs and explain how to remove secrets and personal data before sharing them. Diagnose whether this is configuration, an external service problem, or a bug in vibePMS. Preserve existing data and propose the smallest safe fix.
+
+For a reproducible vibePMS bug, search https://github.com/pmsvibe60-creator/vibePMS/issues for an existing report. If none exists, open an issue with a clear title, reproduction steps, expected and actual behavior, versions and sanitized logs. If you cannot post, provide a ready-to-paste report and the issue link. Do not publish credentials, tenant data or security vulnerabilities; use the repository's private security reporting channel for vulnerabilities.
+
+Verify the fix and tell me what remains uncertain.

@@ -74,3 +74,11 @@ vibePMS. Less boilerplate. More building. Your property management head start, b
 5. End with the source repository and an invitation to contribute.
 
 Record actual sandbox behavior. Do not use the landing-page illustration as a product screenshot or imply payment completion unless you have verified it.
+
+## AI-guided setup blurb
+
+Start in plain English. Use Codex or Claude Code to help configure vibePMS, adapt
+your workflows and walk through Railway hosting without writing code yourself.
+Bring your own supported AI plan and hosting account; service costs and usage
+limits are separate. This preview still needs owner setup and validation. If you
+find a reproducible bug, report it in GitHub Issues with sanitized logs.

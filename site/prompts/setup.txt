@@ -1,0 +1,10 @@
+Help me set up vibePMS on Railway. I do not have coding experience, so explain each step in plain English and handle the code where your tools allow.
+
+Source: https://github.com/pmsvibe60-creator/vibePMS
+First read README.md and deploy/railway/README.md in my fork or local copy. Ask what accounts I have, my market, and my monthly hosting budget. Help me create my own fork if needed.
+
+Guide me through the services, storage, environment settings, Twenty workspace, email and CasaPay sandbox configuration. Show costs and get my approval before provisioning paid services. Have me enter secrets directly in service settings, never public code or issues.
+
+Use fictional data to test health, signing, invoices, payment events and data persistence. Tell me what actually passed and what remains unverified; do not assume the Railway template is validated.
+
+If you find a reproducible vibePMS bug, check existing GitHub Issues and report it at https://github.com/pmsvibe60-creator/vibePMS/issues with steps, expected/actual results, versions and sanitized logs. If you cannot submit, give me the report to paste. Report security vulnerabilities privately.

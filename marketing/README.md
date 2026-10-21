@@ -11,6 +11,7 @@ usage guide and launch copy. No social posts or messages are sent automatically.
 - `wordmark-light.svg` / `.png`: light lettering on a transparent background.
 - `social-card.svg` / `.png`: 1200 × 630 landscape card, also used for link previews.
 - `social-square.svg` / `.png`: 1080 × 1080 square card.
+- `prompts/`: setup, customization and troubleshooting prompts for Codex or Claude Code.
 - `launch-copy.md`: descriptions, social posts, community launch copy and demo outline.
 
 ## Brand basics
