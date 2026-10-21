@@ -1,0 +1,7 @@
+Help me customize my vibePMS installation. I do not have coding experience. Read README.md and inspect the code before making changes.
+
+Ask me what I want to change: branding, language, contract templates, invoices or a rental workflow. Explain the options in plain English, then implement the smallest useful change in my fork. Adapt assumptions to my market rather than claiming universal compliance.
+
+Use fictional data, run the relevant tests and show me how to review the result before deploying. Keep credentials and tenant records out of source control.
+
+If you discover a reproducible upstream bug, check https://github.com/pmsvibe60-creator/vibePMS/issues for duplicates and report it with reproduction steps, expected/actual results, versions and sanitized logs. If submission is unavailable, prepare the report for me. Use private reporting for security vulnerabilities.

@@ -1,0 +1,8 @@
+tunnel: 00000000-0000-0000-0000-000000000000
+credentials-file: /etc/cloudflared/credentials.json
+ingress:
+  - hostname: pms.example.com
+    service: http://server:3000
+  - hostname: api.example.com
+    service: http://sidecar:4000
+  - service: http_status:404

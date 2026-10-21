@@ -1,0 +1,91 @@
+{
+  "labels": [
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Reproducible defect"
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "New or improved behavior"
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Documentation improvement"
+    },
+    {
+      "name": "needs-info",
+      "color": "d876e3",
+      "description": "Waiting for reproduction details"
+    },
+    {
+      "name": "good first issue",
+      "color": "7057ff",
+      "description": "Suitable for a first contribution"
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Community help welcome"
+    }
+  ],
+  "milestones": [
+    "v0.1.0 \u2014 public preview",
+    "v0.2.0 \u2014 reliable self-hosting"
+  ],
+  "issues": [
+    {
+      "title": "Validate clean Docker installation",
+      "body": "Start from fresh volumes. Verify health, schema setup and documented local URLs. Record versions and steps. Do not use production data.",
+      "labels": [
+        "bug"
+      ],
+      "milestone": 0
+    },
+    {
+      "title": "Verify CasaPay sandbox lifecycle",
+      "body": "Use synthetic records to verify signing, countersigning, activation, payment webhook, monthly invoice and status sync. Document expected retry behavior and remaining failures.",
+      "labels": [
+        "enhancement"
+      ],
+      "milestone": 0
+    },
+    {
+      "title": "Add demo walkthrough",
+      "body": "Document one fictional unit, tenant and lease with sanitized screenshots and sandbox-only instructions.",
+      "labels": [
+        "documentation",
+        "good first issue"
+      ],
+      "milestone": 0
+    },
+    {
+      "title": "Validate Railway deployment and reusable template",
+      "body": "Follow the deployment guide, verify persistent storage after restart, then test the sanitized template in a fresh project before publishing its URL.",
+      "labels": [
+        "enhancement"
+      ],
+      "milestone": 1
+    },
+    {
+      "title": "Document and test backup restoration",
+      "body": "Restore both databases, Twenty attachments and sidecar files into an isolated deployment; document commands and recovery checks.",
+      "labels": [
+        "documentation",
+        "help wanted"
+      ],
+      "milestone": 1
+    },
+    {
+      "title": "Add integration regression coverage",
+      "body": "Cover duplicate webhooks, payment failures and scheduler retries without live external accounts.",
+      "labels": [
+        "enhancement",
+        "help wanted"
+      ],
+      "milestone": 1
+    }
+  ]
+}
