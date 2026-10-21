@@ -2,7 +2,7 @@ name: Deploy landing page
 on:
   push:
     branches: [main]
-    paths: ['site/**', '.github/workflows/pages.yml']
+    paths: ['site/**', 'scripts/version-site-assets.py', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,6 +24,8 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - name: Version stylesheet and script URLs
+        run: python3 scripts/version-site-assets.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
