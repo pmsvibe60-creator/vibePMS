@@ -13,6 +13,8 @@ import { getDocument, getSigningRequest, sendForSigning, submitSignature } from 
 import { loadLease } from './services/twentyRecords.ts';
 import { provisionSchema } from './twenty/schema.ts';
 import { retryStartup } from './lib/retry.ts';
+import { runFinanceTool } from './finance/service.ts';
+import { toolDefinitions } from './finance/contracts.ts';
 import { handleTwentyEvent } from './services/twentyEvents.ts';
 
 declare module 'fastify' { interface FastifyRequest { rawBody?: string } }
@@ -141,6 +143,18 @@ app.post('/webhooks/twenty', async (req, reply) => {
   const nonce = (req.headers['x-twenty-webhook-nonce'] as string) || `${body?.eventName}:${body?.record?.id}:${body?.eventDate}`;
   await recordAndProcess('twenty', nonce, { eventName: body?.eventName, id: body?.record?.id, updatedFields: body?.updatedFields }, () => handleTwentyEvent(body));
   return { received: true };
+});
+
+// ---------- Finance tools (one self-hosted workspace, admin token required) ----------
+app.post<{ Params: { name: string } }>('/admin/finance/:name', async (req, reply) => {
+  if (!requireAdmin(req, reply)) return;
+  if (!toolDefinitions.some(tool => tool.name === req.params.name)) return reply.code(404).send({ error: 'Unknown finance tool' });
+  try { return await runFinanceTool(req.params.name, req.body ?? {}); }
+  catch (error) {
+    const message = error instanceof Error ? error.message : 'Finance operation failed';
+    // No transaction contents or credentials in application logs.
+    return reply.code(400).send({ error: message });
+  }
 });
 
 // ---------- Admin actions (callable from Twenty workflows "HTTP request" steps) ----------

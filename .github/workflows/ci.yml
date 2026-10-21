@@ -12,6 +12,20 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: finance_test
+          POSTGRES_PASSWORD: local-test-only
+          POSTGRES_DB: vibepms_finance_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U finance_test -d vibepms_finance_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://finance_test:local-test-only@127.0.0.1:5432/vibepms_finance_test
+      FINANCE_TEST_DATABASE_URL: postgres://finance_test:local-test-only@127.0.0.1:5432/vibepms_finance_test
     timeout-minutes: 10
     defaults:
       run:
@@ -26,6 +40,9 @@ jobs:
           package-manager-cache: false
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - run: node ../scripts/build-finance-demo.mjs
+      - run: git diff --exit-code -- ../site/finance-engine.js ../site/finance-demo.js
+      - run: node ../scripts/test-finance-demo.mjs
       - run: pnpm typecheck
       - run: pnpm test
   docker:

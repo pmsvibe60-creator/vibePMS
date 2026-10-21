@@ -7,9 +7,14 @@ export async function query<T extends pg.QueryResultRow = any>(text: string, par
   return pool.query<T>(text, params);
 }
 
-/** Sidecar-owned state. Business data lives in Twenty; this is only plumbing. */
+/** Sidecar-owned state. Twenty owns property records; the sidecar also owns the bank reconciliation ledger. */
 export async function migrate() {
   await query(`
+    CREATE TABLE IF NOT EXISTS finance_workspace (
+      id integer PRIMARY KEY CHECK (id = 1),
+      state jsonb NOT NULL,
+      updated_at timestamptz NOT NULL DEFAULT now()
+    );
     CREATE TABLE IF NOT EXISTS signing_requests (
       token        text PRIMARY KEY,
       lease_id     text NOT NULL,
