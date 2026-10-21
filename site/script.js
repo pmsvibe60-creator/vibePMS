@@ -27,7 +27,7 @@ fetch('prompts.json')
     return response.json();
   })
   .then(data => {
-    for (const key of ['setup', 'customize', 'debug']) {
+    for (const key of ['setup', 'customize', 'debug', 'manage']) {
       if (typeof data[key] !== 'string' || !data[key].trim()) throw new Error('Invalid prompt library');
     }
     prompts = data;
