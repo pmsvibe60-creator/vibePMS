@@ -1,0 +1,108 @@
+name: vibepms
+
+x-twenty-env: &twenty-env
+  PG_DATABASE_URL: postgres://${PG_DATABASE_USER:-postgres}:${PG_DATABASE_PASSWORD}@db:5432/default
+  SERVER_URL: ${SERVER_URL:-http://localhost:3020}
+  REDIS_URL: redis://redis:6379
+  STORAGE_TYPE: local
+  ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+  APP_SECRET: ${APP_SECRET}
+  EMAIL_FROM_ADDRESS: ${SMTP_FROM_ADDRESS:-}
+  EMAIL_FROM_NAME: ${SMTP_FROM_NAME:-}
+  EMAIL_DRIVER: ${TWENTY_EMAIL_DRIVER:-logger}
+  EMAIL_SMTP_HOST: ${SMTP_HOST:-}
+  EMAIL_SMTP_PORT: ${SMTP_PORT:-465}
+  EMAIL_SMTP_USER: ${SMTP_USER:-}
+  EMAIL_SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+
+services:
+  server:
+    image: twentycrm/twenty:${TWENTY_TAG:-v2.45.8}
+    volumes:
+      - server-local-data:/app/packages/twenty-server/.local-storage
+    ports:
+      - "127.0.0.1:${TWENTY_HOST_PORT:-3020}:3000"
+    environment:
+      <<: *twenty-env
+      NODE_PORT: 3000
+    depends_on:
+      db: { condition: service_healthy }
+      redis: { condition: service_healthy }
+    healthcheck:
+      test: curl --fail http://localhost:3000/healthz
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  worker:
+    image: twentycrm/twenty:${TWENTY_TAG:-v2.45.8}
+    volumes:
+      - server-local-data:/app/packages/twenty-server/.local-storage
+    command: ["yarn", "worker:prod"]
+    environment:
+      <<: *twenty-env
+      DISABLE_DB_MIGRATIONS: "true"
+      DISABLE_CRON_JOBS_REGISTRATION: "true"
+    depends_on:
+      db: { condition: service_healthy }
+      server: { condition: service_healthy }
+    restart: unless-stopped
+
+  db:
+    image: postgres:16
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./infra/init-pms-db.sql:/docker-entrypoint-initdb.d/10-pms.sql:ro
+    environment:
+      POSTGRES_DB: default
+      POSTGRES_USER: ${PG_DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${PG_DATABASE_PASSWORD}
+    healthcheck:
+      test: pg_isready -U ${PG_DATABASE_USER:-postgres} -h localhost -d postgres
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    command: ["--maxmemory-policy", "noeviction"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  sidecar:
+    build: ./sidecar
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://${PG_DATABASE_USER:-postgres}:${PG_DATABASE_PASSWORD}@db:5432/pms
+      TWENTY_URL: http://server:3000
+    ports:
+      - "127.0.0.1:${SIDECAR_HOST_PORT:-4000}:4000"
+    volumes:
+      - sidecar-files:/data
+    depends_on:
+      db: { condition: service_healthy }
+      server: { condition: service_healthy }
+    restart: unless-stopped
+
+  cloudflared:
+    profiles: [tunnel]
+    image: cloudflare/cloudflared:2026.9.1
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared/config.yml:/etc/cloudflared/config.yml:ro
+      - ${CLOUDFLARED_CREDENTIALS:-./cloudflared/credentials.json}:/etc/cloudflared/credentials.json:ro
+    depends_on:
+      - server
+      - sidecar
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  server-local-data:
+  sidecar-files:
