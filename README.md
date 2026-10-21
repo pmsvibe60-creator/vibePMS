@@ -1,5 +1,7 @@
 # vibePMS
 
+[Website](https://pmsvibe60-creator.github.io/vibePMS/) · [Launch kit](marketing/README.md) · [Roadmap](https://github.com/users/pmsvibe60-creator/projects/1)
+
 **An open-source property management starter kit for vibe coders, built on Twenty CRM. Self-host it, customize it, and make it your own.**
 
 Public preview, with rental workflows currently oriented toward Estonia.
