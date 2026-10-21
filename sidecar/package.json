@@ -12,9 +12,11 @@
     "setup": "tsx src/cli.ts setup",
     "job": "tsx src/cli.ts job",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "mcp": "node --import tsx src/finance/mcp.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
     "fastify": "5.12.5",
     "handlebars": "4.7.9",
     "node-cron": "4.6.0",

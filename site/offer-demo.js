@@ -77,6 +77,13 @@
     });
     if (focus) tab.focus();
   }
+  function openLinkedDemo() {
+    if (window.location.hash !== '#finance') return;
+    const tab = tabs.find(item => item.dataset.demoTab === 'finance');
+    if (tab) { selectTab(tab); document.querySelector('#offer-demo').scrollIntoView({ block: 'start' }); }
+  }
+  window.addEventListener('hashchange', openLinkedDemo);
+  openLinkedDemo();
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => selectTab(tab));
     tab.addEventListener('keydown', event => {

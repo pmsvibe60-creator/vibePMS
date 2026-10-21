@@ -19,6 +19,14 @@ pms.example.com      → Twenty (operator UI)                ┐
 api.example.com  → sidecar (/sign, /webhooks, /files)  ┘ Cloudflare tunnel "vibepms"
 ```
 
+## Reconcile rent through your AI assistant
+
+Import a CSV statement through your own MCP-enabled AI client, review suggested invoice matches, and approve partial or split payments. Track owner costs and tenant cost shares awaiting billing, with a persistent ledger and correction history. No bank-feed subscription is required.
+
+[Connect the finance MCP tools](docs/finance-mcp.md) · [Try the sample-data demo](https://pmsvibe60-creator.github.io/vibePMS/#finance) (Follow the money)
+
+This first release supports bank-backed costs and separate bank reconciliation fields in Twenty. It excludes provider-managed/deposit invoices and does not move money. The shared engine and PostgreSQL/MCP flow are tested; a live Twenty deployment has not yet been verified.
+
 ## How it works
 
 | You do (in Twenty) | The system does |
