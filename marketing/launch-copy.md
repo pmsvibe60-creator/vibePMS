@@ -6,11 +6,11 @@ An open-source property management starter kit for vibe coders, built on Twenty 
 
 ## Short tagline
 
-Your property management head start.
+Your AI. Your properties. Everything connected.
 
 ## Hero / campaign line
 
-Less boilerplate. More building.
+You bring the AI. We bring the structure.
 
 ## GitHub About
 
@@ -24,7 +24,7 @@ https://github.com/pmsvibe60-creator/vibePMS
 
 ## LinkedIn
 
-Less boilerplate. More building.
+You bring the AI. We bring the structure.
 
 vibePMS is an open-source property management starter kit for vibe coders, built on Twenty CRM.
 
@@ -63,7 +63,7 @@ Explore: https://pmsvibe60-creator.github.io/vibePMS/
 
 ## Suggested social graphic alt text
 
-vibePMS. Less boilerplate. More building. Your property management head start, built on Twenty CRM. MIT licensed, self-hosted, for vibe coders. Public preview.
+vibePMS. You bring the AI. We bring the structure. Your property management head start, built on Twenty CRM. MIT licensed, self-hosted, for vibe coders. Public preview.
 
 ## 30-second demo storyboard
 
