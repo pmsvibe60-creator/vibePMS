@@ -23,7 +23,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="header wrap">
   <a class="brand" href="./" aria-label="vibePMS home"><img src="assets/icon.svg" width="34" height="34" alt=""><span>vibe<span class="brand-light">PMS</span></span></a>
-  <nav aria-label="Main navigation"><a href="#inside">What’s inside</a><a href="#start">AI setup</a><a href="#manage">Manage with AI</a><a href="#kit">Launch kit</a></nav>
+  <nav aria-label="Main navigation"><a href="#inside">What’s inside</a><a href="#start">AI setup</a><a href="#manage">Manage with AI</a><a href="#offer-demo">Feature demos</a></nav>
   <a class="repo-link" href="https://github.com/pmsvibe60-creator/vibePMS">View on GitHub <span aria-hidden="true">↗</span></a>
 </header>
 <main id="main">
@@ -32,7 +32,7 @@
     <a class="eyebrow release" href="https://github.com/pmsvibe60-creator/vibePMS/releases/tag/v0.1.0"><span class="status-dot"></span> V0.1.0 / PUBLIC PREVIEW <span aria-hidden="true">↗</span></a>
     <h1>Less boilerplate.<br>More <span class="highlight">building.</span></h1>
     <p class="hero-intro">Your open-source property management head start. Built on Twenty CRM. Make it yours, then connect your AI assistant to your property records.</p>
-    <div class="actions"><a class="button primary" href="#start">Set it up with AI <span aria-hidden="true">↓</span></a><a class="text-link" href="#inside">Explore the starter <span aria-hidden="true">↓</span></a></div>
+    <div class="actions"><a class="button primary" href="#start">Set it up with AI <span aria-hidden="true">↓</span></a><a class="text-link" href="#offer-demo">See the private offer demo <span aria-hidden="true">↓</span></a></div>
     <div class="hero-tags"><span>MIT licensed</span><span>Self-hosted</span><span>For vibe coders</span></div>
   </div>
   <div class="hero-art" aria-label="Illustrated rental workflow with fictional example data">
@@ -49,6 +49,43 @@
   </div>
 </section>
 <div class="stack-strip"><div class="wrap"><span class="eyebrow">A PRACTICAL STARTING POINT</span><span>Twenty CRM <b>+</b> TypeScript <b>+</b> Docker <b>+</b> Your ideas</span></div></div>
+<section id="offer-demo" class="section wrap offer-demo-section" aria-labelledby="offer-demo-title">
+  <div class="section-heading"><div><span class="eyebrow">FEATURE DEMOS / INTERACTIVE CONCEPTS</span><h2 id="offer-demo-title">A few words.<br>A whole lot less admin.</h2></div><p>Explore three ideas for your property assistant. Watch a request take shape, review the details, and try the result. These scripted previews show proposed workflows, not live integrations.</p></div>
+  <div class="demo-tabs" role="tablist" aria-label="Feature demos"><button id="tab-private" role="tab" aria-selected="true" aria-controls="demo-private" data-demo-tab="private" type="button">01 <span>Private rental offer</span></button><button id="tab-recurring" role="tab" aria-selected="false" aria-controls="demo-recurring" data-demo-tab="recurring" tabindex="-1" type="button">02 <span>Recurring invoices</span></button><button id="tab-upload" role="tab" aria-selected="false" aria-controls="demo-upload" data-demo-tab="upload" tabindex="-1" type="button">03 <span>Upload a bill</span></button></div>
+  <div id="demo-private" role="tabpanel" aria-labelledby="tab-private">
+  <div class="offer-studio">
+    <div class="studio-bar"><span><i aria-hidden="true"></i> YOUR PROPERTY ASSISTANT</span><span>SCRIPTED DEMO</span></div>
+    <div class="studio-body">
+      <div class="speaker"><span aria-hidden="true">YOU</span><strong>A home. A few details. That’s the brief.</strong></div>
+      <div class="typing-box"><p id="offer-typed" aria-hidden="true">Press play to watch an example request.</p><p class="sr-only">Example request: prepare a private rental offer for a fictional London flat, from 1 September 2027 to 31 August 2028, at £1,450 per month with a £1,450 deposit, using Willow &amp; Co branding.</p></div>
+      <div class="demo-controls"><button type="button" id="offer-play" class="button primary">Play the conversation <span aria-hidden="true">▶</span></button><button type="button" id="offer-skip" class="demo-text-button" hidden>Skip typing →</button><a href="offer-demo.html" class="demo-direct">Just show me the landing page ↗</a></div>
+      <div id="offer-review" class="offer-review" hidden><span class="eyebrow">ASSISTANT / READY FOR YOUR REVIEW</span><h3>Here’s the offer I’d prepare.</h3><dl><div><dt>Property</dt><dd>Flat 4, 24 Willow Mews, London, UK</dd></div><div><dt>Dates</dt><dd>1 Sep 2027 → 31 Aug 2028</dd></div><div><dt>Monthly rent</dt><dd>£1,450 · utilities excluded</dd></div><div><dt>First payment</dt><dd>£2,900 · rent + £1,450 deposit</dd></div><div><dt>Brand</dt><dd>Willow &amp; Co · forest green</dd></div></dl><p>Fictional property and terms. Creating this demo link publishes no offer and reserves no property.</p><button id="offer-approve" class="button primary" type="button">Approve &amp; create demo link</button></div>
+      <p id="offer-demo-status" class="demo-status" role="status" aria-live="polite">A product concept you can click through. No live AI, signatures or payments.</p>
+    </div>
+  </div>
+  <div id="offer-result" class="offer-result" hidden>
+    <div class="offer-ready"><div><span class="eyebrow">YOUR EXAMPLE LINK IS READY</span><h3>A welcome, with everything in one place.</h3><a id="offer-open" class="offer-url" href="offer-demo.html" target="_blank" rel="noopener noreferrer">Open Willow &amp; Co’s demo offer ↗</a><p>This public example shows the proposed private-link experience.</p></div><span class="ready-seal" aria-hidden="true">↗</span></div>
+    <div class="preview-browser"><div class="preview-browser-bar"><span aria-hidden="true">● ● ●</span><span>Willow &amp; Co / tenant landing preview</span><a href="offer-demo.html" target="_blank" rel="noopener noreferrer">Open full page ↗</a></div><iframe id="offer-frame" title="Fictional Willow and Co private rental offer walkthrough" loading="lazy"></iframe></div>
+  </div>
+  </div>
+  <div id="demo-recurring" role="tabpanel" aria-labelledby="tab-recurring" hidden>
+    <div class="offer-studio"><div class="studio-bar"><span><i aria-hidden="true"></i> YOUR PROPERTY ASSISTANT</span><span>SCRIPTED DEMO</span></div><div class="studio-body">
+      <div class="speaker"><span aria-hidden="true">YOU</span><strong>Set the rhythm. Let the routine follow.</strong></div><div class="typing-box"><p id="recurring-typed" aria-hidden="true">Press play to prepare a recurring rent schedule.</p><p class="sr-only">Example: prepare monthly £1,450 rent invoices for Alex Morgan at the fictional Willow Mews flat, September 2027 through August 2028, due on the first.</p></div>
+      <div class="demo-controls"><button id="recurring-play" class="button primary" type="button">Play the conversation ▶</button><button id="recurring-skip" class="demo-text-button" type="button" hidden>Skip typing →</button></div>
+      <div id="recurring-review" class="offer-review" hidden><span class="eyebrow">ASSISTANT / CHECK THE SCHEDULE</span><h3>One lease. Twelve monthly invoices.</h3><dl><div><dt>Tenant / property</dt><dd>Alex Morgan · Flat 4, 24 Willow Mews</dd></div><div><dt>Frequency</dt><dd>Monthly · due on the 1st</dd></div><div><dt>Amount</dt><dd>£1,450 per invoice · rent only</dd></div><div><dt>Period</dt><dd>September 2027–August 2028</dd></div></dl><p>12 invoices · £17,400 total. No deposit, utilities, or extra charges included in this example.</p><button id="recurring-approve" class="button primary" type="button">Approve &amp; preview schedule</button></div><p id="recurring-demo-status" class="demo-status" role="status" aria-live="polite">Scripted preview. No invoices are created or sent.</p>
+    </div></div>
+    <div id="recurring-result" class="demo-output" hidden><div class="output-heading"><div><span class="eyebrow">RECURRING RENT / DEMO SCHEDULE</span><h3>September to August. Taken care of.</h3><p>A preview of the proposed schedule. In production, each invoice would need a verified creation and delivery result.</p></div><div class="output-total"><strong>£17,400</strong><span>12 × £1,450</span></div></div><div id="recurring-months" class="month-grid"></div><p class="demo-output-note">Nothing is scheduled in a live account. GBP values are illustrative; the current payment integration uses EUR.</p></div>
+  </div>
+  <div id="demo-upload" role="tabpanel" aria-labelledby="tab-upload" hidden>
+    <div class="offer-studio"><div class="studio-bar"><span><i aria-hidden="true"></i> YOUR PROPERTY ASSISTANT</span><span>SCRIPTED DEMO</span></div><div class="studio-body">
+      <div class="speaker"><span aria-hidden="true">YOU</span><strong>Give the paperwork somewhere to go.</strong></div><div class="sample-attachment"><span class="file-icon" aria-hidden="true">PDF</span><div><strong>willow-maintenance-sample.pdf</strong><span>Fictional sample attachment · no file is uploaded</span></div></div><div class="typing-box"><p id="upload-typed" aria-hidden="true">Press play to see a sample bill become a draft expense.</p><p class="sr-only">Example: extract a fictional maintenance bill, match it to the Willow Mews flat, and prepare an expense for review without charging the tenant.</p></div>
+      <div class="demo-controls"><button id="upload-play" class="button primary" type="button">Play the conversation ▶</button><button id="upload-skip" class="demo-text-button" type="button" hidden>Skip typing →</button></div>
+      <div id="upload-review" class="offer-review" hidden><span class="eyebrow">ASSISTANT / REVIEW EXTRACTED DETAILS</span><h3>A maintenance bill. A suggested match.</h3><dl><div><dt>Supplier / reference</dt><dd>Example Maintenance Ltd · EX-2041</dd></div><div><dt>Property match</dt><dd>Flat 4, 24 Willow Mews · confirm before saving</dd></div><div><dt>Work / invoice date</dt><dd>Kitchen tap repair · 12 Sep 2027</dd></div><div><dt>Total / due date</dt><dd>£86.40 · due 26 Sep 2027</dd></div></dl><p>Suggested category: Repairs &amp; maintenance. Keep as an owner expense; do not bill the tenant. Sample values are scripted, not OCR results.</p><button id="upload-approve" class="button primary" type="button">Confirm match &amp; preview draft</button></div><p id="upload-demo-status" class="demo-status" role="status" aria-live="polite">Fictional document only. No upload, extraction service or live expense record.</p>
+    </div></div>
+    <div id="upload-result" class="demo-output" hidden><div class="output-heading"><div><span class="eyebrow">DOCUMENT → REVIEW → DRAFT</span><h3>Filed with the right property.</h3><p>The proposed result: an expense draft linked to its source document and property, ready for an owner to review.</p></div><div class="output-total"><strong>£86.40</strong><span>Owner expense · unpaid</span></div></div><div class="expense-preview"><div><span class="expense-icon" aria-hidden="true">↳</span><div><strong>Kitchen tap repair</strong><p>Example Maintenance Ltd · EX-2041</p><p>Flat 4, 24 Willow Mews · London, UK</p></div></div><span class="draft-label">DEMO DRAFT</span></div><ul class="expense-checks"><li>Source document linked in the example</li><li>Category: Repairs &amp; maintenance</li><li>Tenant charge: none</li></ul><p class="demo-output-note">Document extraction and expense creation are proposed features. No expense is saved, payment made, or tenant charged.</p></div>
+  </div>
+  <noscript><p><a class="text-link" href="offer-demo.html">Open the fictional rental offer example ↗</a>. Feature tabs and the typing animation need JavaScript.</p></noscript>
+</section>
 <section id="inside" class="section wrap">
   <div class="section-heading"><div><span class="eyebrow">01 / THE STARTER</span><h2>Start with the<br>rental essentials.</h2></div><p>Spend your time shaping the experience. The starter gives you a data model and sidecar workflows to build on.</p></div>
   <div class="features">
@@ -101,5 +138,6 @@ If you find a reproducible vibePMS bug, check existing GitHub Issues and report 
 </main>
 <footer class="wrap"><a class="brand" href="./"><img src="assets/icon.svg" alt="" width="28" height="28"><span>vibe<span class="brand-light">PMS</span></span></a><p>Built on Twenty CRM. Made to be made yours.</p><div><a href="https://github.com/pmsvibe60-creator/vibePMS">GitHub</a><a href="https://github.com/pmsvibe60-creator/vibePMS/blob/main/LICENSE">MIT license</a><a href="https://github.com/pmsvibe60-creator/vibePMS/security/policy">Security</a></div></footer>
 <script src="script.js" defer></script>
+<script src="offer-demo.js" defer></script>
 </body>
 </html>

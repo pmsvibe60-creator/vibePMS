@@ -12,3 +12,13 @@ Edit launch copy in `marketing/`, graphics in `site/assets/`, and regenerate the
 launch ZIP with `python3 scripts/package-launch-kit.py` after changes. The PNG social
 card is used by Open Graph and Twitter/X metadata. Keep metadata URLs in sync if
 the repository owner or name changes.
+
+## Feature demonstrations
+
+The homepage's feature tabs are scripted product concepts, controlled by
+`offer-demo.js`: a private rental offer, a recurring invoice schedule, and a
+sample bill-to-expense workflow. They do not call AI, upload files, or modify CRM
+records. `offer-demo.html` is the standalone fictional tenant landing page;
+`offer-preview.js` simulates its steps and brand-colour switches. Keep the demo
+labels and fictional-data notices visible. GBP examples do not imply GBP support
+in the current payment integration.
