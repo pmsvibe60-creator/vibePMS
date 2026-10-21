@@ -1,14 +1,16 @@
 # vibePMS
 
+[Website](https://pmsvibe60-creator.github.io/vibePMS/) · [Launch kit](marketing/README.md) · [Roadmap](https://github.com/users/pmsvibe60-creator/projects/1)
+
 **An open-source property management starter kit for vibe coders, built on Twenty CRM. Self-host it, customize it, and make it your own.**
 
-Public preview, with rental workflows currently oriented toward Estonia.
+Public preview for builders worldwide. Adapt contract templates, rental rules and integrations to your market.
 
 MIT-licensed sidecar code; third-party services retain their own licenses.
 End-to-end sandbox payment and Railway deployment validation are still pending.
 Use fictional data while evaluating.
 
-Rent management for apartments owned/let through an Estonian OÜ.
+A rental-management foundation for landlords and builders.
 **Twenty CRM** (self-hosted) is the database + UI; a small **sidecar** service adds contracts, e-signing,
 CasaPay rent/deposit collection, utility re-billing and scheduling.
 
