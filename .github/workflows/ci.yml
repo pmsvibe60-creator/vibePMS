@@ -40,6 +40,10 @@ jobs:
           package-manager-cache: false
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+      - run: node ../scripts/build-inspection-demo.mjs
+      - run: node ../scripts/test-inspection-demo.mjs
+      - run: python3 ../scripts/version-site-assets.py
+      - run: git diff --exit-code -- ../site/inspection-demo.html ../site/inspection.js ../site/inspection.css
       - run: node ../scripts/build-finance-demo.mjs
       - run: git diff --exit-code -- ../site/finance-engine.js ../site/finance-demo.js
       - run: node ../scripts/test-finance-demo.mjs

@@ -1,3 +1,4 @@
+import { inspectionTools } from '../inspections/tools.ts';
 import { McpServer } from '@modelcontextprotocol/server';
 import { serveStdio } from '@modelcontextprotocol/server/stdio';
 import { toolDefinitions } from './contracts.ts';
@@ -26,6 +27,17 @@ export function createFinanceMcp() {
       } catch {
         return {isError:true,content:[{type:'text' as const,text:'Finance request failed or timed out. Check the connection, then review current state before retrying; the operation may already have committed.'}]};
       }
+    });
+  }
+  for (const tool of inspectionTools) {
+    server.registerTool(tool.name,{description:tool.description,inputSchema:tool.schema,annotations:{readOnlyHint:tool.method==='GET',destructiveHint:tool.method!=='GET',openWorldHint:false}},async(input:unknown)=>{
+      try {
+        const data:any=tool.schema.parse(input);
+        const path=tool.path==='revoke'?`/${data.id}/revoke`:'';
+        delete data.approved;
+        const response=await fetch(new URL(`${base.pathname.replace(/\/$/,'')}/admin/inspections${path}`,base.origin),{method:tool.method,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},...(tool.method==='POST'?{body:JSON.stringify(tool.path==='revoke'?{}:data)}:{}),redirect:'error',signal:AbortSignal.timeout(45_000)});
+        return {isError:!response.ok,content:[{type:'text' as const,text:JSON.stringify(await response.json())}]};
+      }catch{return {isError:true,content:[{type:'text' as const,text:'Inspection request failed. Inspect the current list before retrying creation; a timed-out request may have committed.'}]};}
     });
   }
   return server;
