@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { inflateSync } from 'node:zlib';
 import { createHash, randomUUID } from 'node:crypto';
 const text = z.string().trim().max(2000);
 const label = z.string().trim().min(1).max(160);
@@ -36,6 +37,14 @@ export function validateContent(raw:unknown,s:Inspection):Content{
   if(!/^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(p.data))throw Error('Photos must be PNG images');
   const b=Buffer.from(p.data.split(',')[1],'base64');
   if(b.length<33||b.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||b.toString('ascii',12,16)!=='IHDR'||b.readUInt32BE(16)<1||b.readUInt32BE(20)<1||b.readUInt32BE(16)>1600||b.readUInt32BE(20)>1600)throw Error('Invalid photo or image dimensions exceed 1600 pixels');
+  // Canvas exports RGB/RGBA, 8-bit, non-interlaced PNG. Bound decompression before PDF rendering.
+  if(b[24]!==8||![2,6].includes(b[25])||b[26]!==0||b[27]!==0||b[28]!==0)throw Error('Use a standard RGB/RGBA PNG photo');
+  const compressed:Buffer[]=[];let offset=8,ended=false;
+  while(offset+12<=b.length){const length=b.readUInt32BE(offset);if(offset+12+length>b.length)throw Error('Invalid PNG chunk');const type=b.toString('ascii',offset+4,offset+8);if(type==='IDAT')compressed.push(b.subarray(offset+8,offset+8+length));offset+=length+12;if(type==='IEND'){ended=true;break;}}
+  if(!ended||offset!==b.length||!compressed.length)throw Error('Incomplete PNG photo');
+  const expected=(b.readUInt32BE(16)*(b[25]===6?4:3)+1)*b.readUInt32BE(20);
+  try{if(inflateSync(Buffer.concat(compressed),{maxOutputLength:expected}).length!==expected)throw Error();}catch{throw Error('Invalid PNG pixel data');}
+
  }
  return c;
 }
