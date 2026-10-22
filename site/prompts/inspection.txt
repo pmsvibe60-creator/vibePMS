@@ -1,0 +1,7 @@
+Help me create a move-in or move-out inspection using vibePMS. Read docs/inspections.md first. Use Twenty to find the correct property and lease IDs, and ask me to confirm the address, tenant name, operator name, date, checklist and whether the tenant fills it alone or we walk through together.
+
+Include condition, inventory, meter readings with units and key counts. For move-out, find the confirmed move-in report for the same property and lease. Show me the full proposed setup and expiry before calling create_inspection with approved=true.
+
+Keep the operator link separate from the tenant link. Do not email or message either link without my instruction. Explain that anyone holding a link can act in its role, and names are self-attested. Both roles must review and confirm the same report. Disagreements remain visible; no charge or deposit deduction follows automatically.
+
+If a confirmed report needs correction, prepare an amendment preserving the original. Do not edit locked content. After a timeout, check list_inspections before creating another report.

@@ -1,3 +1,4 @@
+import { registerInspections } from './inspections/routes.ts';
 import Fastify, { type FastifyReply, type FastifyRequest } from 'fastify';
 import { casapay } from './casapay/client.ts';
 import { verifyCasaPaySignature, verifyTwentySignature } from './casapay/webhook.ts';
@@ -37,6 +38,8 @@ function requireAdmin(req: FastifyRequest, reply: FastifyReply) {
   }
   return true;
 }
+
+registerInspections(app, requireAdmin);
 
 app.get('/health', async () => ({ ok: true }));
 

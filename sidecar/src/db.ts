@@ -10,6 +10,9 @@ export async function query<T extends pg.QueryResultRow = any>(text: string, par
 /** Sidecar-owned state. Twenty owns property records; the sidecar also owns the bank reconciliation ledger. */
 export async function migrate() {
   await query(`
+    CREATE TABLE IF NOT EXISTS inspections (
+      id uuid PRIMARY KEY, state jsonb NOT NULL, tenant_hash text UNIQUE NOT NULL, operator_hash text UNIQUE NOT NULL
+    );
     CREATE TABLE IF NOT EXISTS finance_workspace (
       id integer PRIMARY KEY CHECK (id = 1),
       state jsonb NOT NULL,

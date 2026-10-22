@@ -19,6 +19,12 @@ pms.example.com      → Twenty (operator UI)                ┐
 api.example.com  → sidecar (/sign, /webhooks, /files)  ┘ Cloudflare tunnel "vibepms"
 ```
 
+## Move-in and move-out inspections
+
+Create separate private tenant/operator links, complete a room checklist with photos, meter readings and keys, then confirm a shared report. Move-out reports compare against confirmed move-in observations. Locked content, linked amendments, PDF export and MCP creation are included.
+
+[Inspection setup and limits](docs/inspections.md) · [Try the handover demo](https://pmsvibe60-creator.github.io/vibePMS/inspection-demo.html)
+
 ## Reconcile rent through your AI assistant
 
 Import a CSV statement through your own MCP-enabled AI client, review suggested invoice matches, and approve partial or split payments. Track owner costs and tenant cost shares awaiting billing, with a persistent ledger and correction history. No bank-feed subscription is required.

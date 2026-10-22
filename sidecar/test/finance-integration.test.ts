@@ -56,7 +56,7 @@ describe.skipIf(!enabled)('persistent finance ledger + MCP',()=>{
   try{
    const init=await rpc('initialize',{protocolVersion:'2025-11-25',capabilities:{},clientInfo:{name:'finance-test',version:'1'}});expect(init.result.serverInfo.name).toBe('vibepms-finance');
    child.stdin.write(JSON.stringify({jsonrpc:'2.0',method:'notifications/initialized'})+'\n');
-   const list=await rpc('tools/list',{});expect(list.result.tools.map((t:any)=>t.name)).toContain('approve_payment_allocation');
+   const list=await rpc('tools/list',{});expect(list.result.tools.map((t:any)=>t.name)).toContain('approve_payment_allocation');expect(list.result.tools.map((t:any)=>t.name)).toContain('create_inspection');
    const call=async(name:string,args:any)=>{const r=await rpc('tools/call',{name,arguments:args});expect(r.error).toBeUndefined();expect(r.result.isError).not.toBe(true);return JSON.parse(r.result.content[0].text);};
    const preview=await call('preview_statement_import',source);expect(preview.result.incoming).toBe(145000);
    const staged=await call('stage_statement_import',source);const imported=await call('approve_statement_import',{statementId:staged.result.statementId,approved:true,expectedRevision:staged.revision});expect(imported.result.imported).toBe(1);
