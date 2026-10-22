@@ -34,8 +34,13 @@ function render(){
    const value=input(item.value);value.id='value-'+n;value.maxLength=2000;field(grid,item.kind==='meter'?'Reading and unit (e.g. 12450 kWh)':item.kind==='keys'?'Keys / quantity':'Quantity or details (optional)',value);card.append(grid);
    const notes=el('textarea');notes.id='notes-'+n;notes.value=item.notes;notes.maxLength=2000;field(card,'Comments / disagreements',notes);
    const dispute=input('','checkbox');dispute.checked=item.disputed;dispute.id='disputed-'+n;field(card,'Flag a disagreement for review',dispute);
-   const file=input('','file');file.accept='image/png,image/jpeg';field(card,'Add a photo (PNG or JPEG; maximum 20 per report)',file);
-   file.addEventListener('change',()=>run(async()=>{if(!file.files[0])return;if(state.content.photos.length>=20)throw Error('Maximum 20 photos');const data=await resizePhoto(file.files[0]);state.content=draft();state.content.photos.push({id:crypto.randomUUID(),itemId:item.id,caption:item.room+' / '+item.label,data});render();status('Photo added locally. Save progress to upload it.');}));
+   const photoControls=el('div','','grid photo-controls');
+   for(const camera of [true,false]){
+    const file=input('','file');file.accept='image/png,image/jpeg';if(camera)file.setAttribute('capture','environment');
+    field(photoControls,camera?'Take photo · rear camera':'Choose existing photo',file);
+    file.addEventListener('change',()=>run(async()=>{if(!file.files[0])return;if(state.content.photos.length>=20)throw Error('Maximum 20 photos');status('Preparing photo…');const data=await resizePhoto(file.files[0]);state.content=draft();state.content.photos.push({id:crypto.randomUUID(),itemId:item.id,caption:item.room+' / '+item.label,data});render();status('Photo added locally. Save progress to upload it.');}));
+   }
+   card.append(photoControls,el('p','Take a picture here or select one from your library. Maximum 20 photos per report. Save progress to upload.','notice'));
   }else{card.append(el('p',item.condition+(item.value?' · '+item.value:'')),el('p',item.notes||'No comments'));if(item.disputed)card.append(el('p','Disagreement recorded','dispute'));}
   const photos=el('div','','photos');for(const p of state.content.photos.filter(p=>p.itemId===item.id)){const f=el('figure'),img=el('img');img.src=p.data;img.alt=p.caption;f.append(img,el('figcaption',p.caption));if(state.status==='draft')f.append(button('Remove photo',()=>{state.content=draft();state.content.photos=state.content.photos.filter(x=>x.id!==p.id);render();status('Photo removed locally. Save progress to persist.');}));photos.append(f);}card.append(photos);root.append(card);
  }
