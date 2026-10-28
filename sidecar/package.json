@@ -20,7 +20,7 @@
     "fastify": "5.12.5",
     "handlebars": "4.7.9",
     "node-cron": "4.6.0",
-    "nodemailer": "10.0.12",
+    "nodemailer": "10.2.1",
     "pdfmake": "0.2.23",
     "pg": "8.23.1",
     "tsx": "4.23.15",
