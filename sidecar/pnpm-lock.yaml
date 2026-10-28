@@ -21,8 +21,8 @@ importers:
         specifier: 4.6.0
         version: 4.6.0
       nodemailer:
-        specifier: 10.0.12
-        version: 10.0.12
+        specifier: 10.2.1
+        version: 10.2.1
       pdfmake:
         specifier: 0.2.23
         version: 0.2.23
@@ -738,8 +738,8 @@ packages:
     resolution: {integrity: sha512-Si/bzYiKRHOB8/a99T2+SDGN582ONDMSTlJr5oCkT6GtnqPjZ2s10eoQRYkW9ZHwjVxONL+W8Fb+qR0AHMQsdg==}
     engines: {node: '>=20'}
 
-  nodemailer@10.0.12:
-    resolution: {integrity: sha512-PQ46oNbNMuH/Sno7B5IWIU9etytwrO0xdTFvWXpIQFRXhBAXtzD48243AS+BCbQQTPD8y3fqUrgLn0tSo77gvg==}
+  nodemailer@10.2.1:
+    resolution: {integrity: sha512-ZrDNsPFoDMwefNs7sJwrYiEJ/CG4ClJWDZv05iNJsEBWa8GRDry1QJHTJxsuTAY9eDDKjX4k+q3SxslXJOao7w==}
     engines: {node: '>=20.0.0'}
 
   object-is@1.1.6:
@@ -1696,7 +1696,7 @@ snapshots:
 
   node-cron@4.6.0: {}
 
-  nodemailer@10.0.12: {}
+  nodemailer@10.2.1: {}
 
   object-is@1.1.6:
     dependencies:
