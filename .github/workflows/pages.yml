@@ -27,7 +27,7 @@ jobs:
       - name: Version stylesheet and script URLs
         run: python3 scripts/version-site-assets.py
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - name: Deploy to GitHub Pages
